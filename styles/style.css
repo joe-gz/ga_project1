@@ -1,17 +1,22 @@
 main {
   height:18.75em;
+  width:700px;
+  border: 2px solid black;
 }
 
-.row {
-  width:100%;
-  height:25%;
+.introPage {
+  height:inherit;
+  width: inherit;
+  background: red;
+  position: absolute;
 }
 
 .card {
   margin-right:5px;
   margin-left:5px;
+  margin-top: 5px;
   width:18%;
-  height:95%;
+  height:20%;
   background: blue;
   display: inline-block;
   font-size: 20px;
@@ -35,11 +40,39 @@ main {
   text-align: center;
 }
 
-header div {
+.playerTurn {
   color: red;
   background: black;
   margin-top: 15px;
   margin-bottom: 15px;
   width: 200px;
   padding: 5px;
+  display: none;
+}
+
+.playerSet {
+  display: none;
+}
+
+input {
+  display: none;
+}
+
+.points {
+  display:none;
+}
+
+.misses {
+  display:none;
+}
+
+.help {
+  position: absolute;
+  background: yellow;
+  width: inherit;
+  display: none;
+}
+
+.closeHelp {
+  cursor: pointer;
 }
