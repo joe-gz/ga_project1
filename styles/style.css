@@ -1,7 +1,7 @@
 main {
   height:18.75em;
   width:700px;
-  border: 2px solid black;
+  border: 5px solid black;
 }
 
 .introPage {
@@ -75,4 +75,16 @@ input {
 
 .closeHelp {
   cursor: pointer;
+}
+
+.changeCardsButton {
+  cursor: pointer;
+}
+
+.changeCards {
+  position: absolute;
+  background: yellow;
+  width: inherit;
+  display: none;
+
 }

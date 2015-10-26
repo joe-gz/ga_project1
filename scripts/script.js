@@ -28,6 +28,17 @@ function startGame (){
     $(".underCard").hide();
   };
 
+
+  $(".keanu").on("click", function () {
+    $(".changeCards").hide();
+    for (var i =0; i <=9; i++) {
+      $(".underCard").eq(i).attr("src",'images/keanu/keanu'+i+'.jpg')
+    }
+    for (var j =10; i <=19; i++) {
+      $(".underCard").eq(i).attr("src",'images/keanu/keanu'+(i-10)+'.jpg')
+    }
+  })
+
   $(".twoPlayerButton").on("click", function () {
     playerCount = 2;
     $(".introPage").hide();
@@ -41,6 +52,7 @@ function startGame (){
     $(".introPage").hide();
     $("header input").show();
     $(".playerSet").show();
+    $("header input").eq(1).hide();
     $(".playerTurn").show();
   })
 
@@ -59,10 +71,16 @@ function startGame (){
   }
 
   var playerScoreboardShow = function() {
-    $(".points").eq(0).html(player1+" Points:")
-    $(".points").eq(1).html(player2+" Points:")
-    $(".points").show();
-    $(".misses").show();
+    if (playerCount === 2) {
+      $(".points").eq(0).html(player1+" Points:")
+      $(".points").eq(1).html(player2+" Points:")
+      $(".points").show();
+    } else {
+      $(".points").eq(0).html(player1+" Points:")
+      $(".points").eq(0).show();
+      $(".misses").eq(0).html(player1+" Misses:")
+      $(".misses").eq(0).show();
+    }
   }
 
   var playerSetShow = function() {
@@ -123,7 +141,9 @@ function startGame (){
           // checkForWinner();
           playerTurn();
         } else {
-          $(".playerTurn").text("Player turn: "+player1)
+          checkForMatch1P();
+          $(".playerTurn").text("Player turn: "+player1);
+          clickCount = 0;
         }
       }
     })
@@ -193,7 +213,12 @@ function startGame (){
       $(".active2").removeClass("active2");
     }
     $(".points").eq(0).html(player1+" Points: "+player1Points)
-  }
+    $(".misses").eq(0).html(player1+" Misses: "+totalMiss)
+  };
+
+  $(".changeCardsButton").on("click", function () {
+    $(".changeCards").show();
+  });
 
 };
 

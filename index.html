@@ -13,16 +13,19 @@
     <input value="Player 2" name="2">
     <button class = "playerSet">Set players</button>
     <div class = "points">Player 1 Points</div>
+    <div class = "misses">Player 1 Misses</div>
     <div class = "points">Player 2 Points</div>
+    <div class = "misses">Player 1 Misses</div>
     <div class = "playerTurn">Please input player names</div>
   </header>
 
   <main>
     <div class = "introPage">
       <h2>Welcome to the Nicolas Cage Memory Game!</h2>
-        <button class = "playAloneButton">Play Alone</button>
-        <button class = "twoPlayerButton">Play with a Friend</button>
+      <button class = "playAloneButton">Play Alone</button>
+      <button class = "twoPlayerButton">Play with a Friend</button>
     </div>
+
     <div class = "help">
       <p>
         "Concentration" is a card game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn.
@@ -31,11 +34,16 @@
       <p>Play with a partner to see who scores the most points!</p>
       <div class = "closeHelp">X Close</div>
     </div>
+
+    <div class = "changeCards">
+      <button class = "keanu">Change cards to Keanu Reeves</button>
+      <button class = "choose">Change Cards to (choose late)</button>
+    </div>
   </main>
   <footer>
     <button class = "reset">Reset</button>
     <button class = "helpButton">Help</button>
-    <i class="fa fa-cog">Settings</i>
+    <i class="fa fa-cog changeCardsButton">Change Cards</i>
   </footer>
   <script src = "scripts/jquery-2.1.4.min.js"></script>
   <script src = "scripts/script.js"></script>
