@@ -28,6 +28,12 @@ function startGame (){
     $(".underCard").hide();
   };
 
+  var card = $(".card");
+  for (var i = 0; i < card.length; i++) {
+    var target = Math.floor(Math.random() * card.length - 1) + 1;
+    var target2 = Math.floor(Math.random() * card.length - 1) + 1;
+    card.eq(target).before(card.eq(target2));
+  }
 
   $(".keanu").on("click", function () {
     $(".changeCards").hide();
@@ -130,8 +136,8 @@ function startGame (){
         $(this).addClass("active2")
         matchArray[1] = $(this).children(".underCard").attr("src");
         // this will show both cards for 1 second, then hide them
-        $(this).children(".underCard").show().delay(1000).queue(function(n) {
-          $(".underCard").hide(); n();
+        $(this).children(".underCard").show().delay(1000).queue(function() {
+          $(".underCard").hide();
         });
 
         if (playerCount === 2){
