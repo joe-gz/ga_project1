@@ -1,32 +1,46 @@
 body {
-  background: grey;
+  /*background: #221E1D;*/
+  background: #fff;
 }
 
 header h1 {
-  color: white;
+  color: #63AA9C;
+  text-align: center;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 main {
   height:18.75em;
   width:700px;
-  border: 2px solid black;
-  border-radius: 5px;
   color: white;
 }
 
 .introPage {
   height:inherit;
   width: inherit;
-  background: red;
+  background: rgba(224,227,236,.31);
   position: absolute;
-  border-radius: 5px;
-  color: white;
+  border-radius: 25px;
+  color: #63AA9C;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
 }
 
 .playAloneButton, .twoPlayerButton {
   font-size: 2em;
   display: block;
   margin: 5px;
+  border-radius: 5px;
+  background-color: #E9633B;
+  font-family: 'Playfair Display', serif;
+}
+
+.playAloneButton {
+  margin-left: 35%;
+}
+
+.twoPlayerButton {
+  margin-left: 27%;
 }
 
 .winnerPage {
@@ -49,7 +63,7 @@ main {
   font-size: 20px;
   text-align: center;
   vertical-align: middle;
-  border-radius: 5px;
+  border-radius: 10px;
 
 }
 
@@ -81,18 +95,22 @@ main {
 
 .playerSet {
   display: none;
+  font-family: 'Playfair Display', serif;
 }
 
 input {
   display: none;
+  border-radius: 5px;
 }
 
 .points {
   display:none;
+  font-family: 'Playfair Display', serif;
 }
 
 .misses {
   display:none;
+  font-family: 'Playfair Display', serif;
 }
 
 .help {
@@ -100,6 +118,7 @@ input {
   background: yellow;
   width: inherit;
   display: none;
+  font-family: 'Playfair Display', serif;
 }
 
 .closeHelp {
@@ -114,11 +133,44 @@ input {
   position: absolute;
   background: yellow;
   width: inherit;
-  height: 20%;
+  height: inherit;
   display: none;
+  border-radius: 5px;
+}
+
+.changeCards {
+  font-size: 1em;
+}
+
+.closeSettings,.cardColor {
+  font-size: 1em;
+  display: block;
 }
 
 .colorChange {
   display: none;
+  width:50%;
+  color:black;
   cursor: pointer;
+}
+
+.changeColor {
+  border: 1px solid black;
+  font-size: 1em;
+}
+
+.helpButton,.reset {
+  font-size: .5em;
+  border-radius: 5px;
+  font-family: 'Playfair Display', serif;
+  background-color: #E9633B;
+}
+
+footer {
+  float:right;
+}
+
+.fa-cog {
+  color:#63AA9C;
+  font-family: 'Playfair Display', serif;
 }
