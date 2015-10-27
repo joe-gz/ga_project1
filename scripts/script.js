@@ -1,67 +1,84 @@
 // alert("hello")
 function startGame (){
 
+  var setBoard = function () {
+    clickCount = 0;
+    turnCount = 0;
+    indexArray=[];
+    imageArray = [];
+    matchArray = [];
+    totalScore = 0;
+    totalMiss = 0;
+    player1Points = 0;
+    player2Points = 0;
+  }
+
   var player1 = "player 1";
   var player2 = "player 2";
   var player1Points = 0;
   var player2Points = 0;
-  var clickCount = 0;
-  var turnCount = 0;
-  var indexArray = [];
-  var imageArray = [];
-  var matchArray = [];
-  var totalScore = 0;
-  var totalMiss = 0;
   var playerCount = 0;
+  setBoard();
 
-  // for (var i=0; i<=3; i++){
-  //   $( "main" ).append( "<div class = 'row'></div>" );
-  // };
+  var makeGamePieces = function () {
+    for (var j=0; j<=9; j++){
+      $( "main" ).append( "<div class = 'card'><img class = 'underCard' src='images/sherlock/sherlock"+j+".jpg'></div>" );
+      $(".underCard").hide();
+    };
 
-  for (var j=0; j<=9; j++){
-    $( "main" ).append( "<div class = 'card'><img class = 'underCard' src='images/cage/cage"+j+".jpg'></div>" );
-    $(".underCard").hide();
-  };
+    for (var j=0; j<=9; j++){
+      $( "main" ).append( "<div class = 'card'><img class = 'underCard' src='images/sherlock/sherlock"+j+".jpg'></div>" );
+      $(".underCard").hide();
+    };
 
-  for (var j=0; j<=9; j++){
-    $( "main" ).append( "<div class = 'card'><img class = 'underCard' src='images/cage/cage"+j+".jpg'></div>" );
-    $(".underCard").hide();
-  };
-
-  var card = $(".card");
-  for (var i = 0; i < card.length; i++) {
-    var target = Math.floor(Math.random() * card.length - 1) + 1;
-    var target2 = Math.floor(Math.random() * card.length - 1) + 1;
-    var target3 = Math.floor(Math.random() * card.length - 1) + 1;
-    card.eq(target).before(card.eq(target2)).before(card.eq(target3));
+    randomize();
   }
 
-  $(".ferrell").on("click", function () {
-    $(".changeCards").hide();
-    for (var i =0; i <=9; i++) {
-      $(".underCard").eq(i).attr("src",'images/ferrell/ferrell'+i+'.jpg')
+  var randomize = function() {
+    var card = $(".card");
+    for (var i = 0; i < card.length; i++) {
+      var target = Math.floor(Math.random() * card.length - 1) + 1;
+      var target2 = Math.floor(Math.random() * card.length - 1) + 1;
+      var target3 = Math.floor(Math.random() * card.length - 1) + 1;
+      card.eq(target).before(card.eq(target2)).before(card.eq(target3));
     }
-    for (var j =10; i <=19; i++) {
-      $(".underCard").eq(i).attr("src",'images/ferrell/ferrell'+(i-10)+'.jpg')
-    }
-  })
+  }
+
+  makeGamePieces();
+
+  $(".changeCards").each(function (){
+    $(this).on("click",function(){
+      var name = $(this).attr("name")
+      $("h1").html(name+" Concentration!");
+      $("h2").html("Welcome to the" +name+ "Memory Game!");
+      $(".changeSettings").hide();
+      for (var i =0; i <=9; i++) {
+        $(".underCard").eq(i).attr("src",'images/'+name+'/'+name+i+'.jpg')
+      }
+      for (var j =10; i <=19; i++) {
+        $(".underCard").eq(i).attr("src",'images/'+name+'/'+name+(i-10)+'.jpg')
+      }
+      randomize();
+      })
+    });
 
   $(".twoPlayerButton").on("click", function () {
     playerCount = 2;
-    $(".introPage").hide();
-    $("header input").show();
-    $(".playerSet").show();
-    $(".playerTurn").show();
+    showInputs();
   })
 
   $(".playAloneButton").on("click", function () {
     playerCount = 1;
+    showInputs();
+    $("header input").eq(1).hide();
+  })
+
+  var showInputs = function () {
     $(".introPage").hide();
     $("header input").show();
     $(".playerSet").show();
-    $("header input").eq(1).hide();
     $(".playerTurn").show();
-  })
+  }
 
   // Sets the players using the inputs, then hides input and procudes scoreboard
   $(".playerSet").on("click", function () {
@@ -113,6 +130,7 @@ function startGame (){
     setBoard();
     playerCount = 0;
     clickCount = 0;
+    $(".winnerPage").hide()
     // $(".win").remove();
   })
 
@@ -128,12 +146,11 @@ function startGame (){
   $(".card").each(function (){
     $(this).on("click",function(){
       $(this).children(".underCard").show()
+      $(this).addClass("active")
       if (clickCount < 1){
-        $(this).addClass("active1")
         matchArray[0] = $(this).children(".underCard").attr("src");
         clickCount++
       } else {
-        $(this).addClass("active2")
         matchArray[1] = $(this).children(".underCard").attr("src");
         // this will show both cards for 1 second, then hide them
         setTimeout(function () {
@@ -143,7 +160,6 @@ function startGame (){
         // $(".underCard").hide();
         // console.log("Is this being hit by the bug?");
         // });
-        console.log(clickCount);
         clickCount = 0;
         if (playerCount === 2){
           checkForMatch();
@@ -154,7 +170,7 @@ function startGame (){
           $(".playerTurn").text("Player turn: "+player1);
         }
       }
-      // checkForWinner();
+      checkForWinner();
     })
   });
 
@@ -185,21 +201,8 @@ function startGame (){
   }
 
   var hideMatchedSquares = function () {
-    $(".active1").hide();
-    $(".active2").hide();
+    $(".active").hide();
     removeActiveClass();
-  }
-
-  var setBoard = function () {
-    clickCount = 0;
-    turnCount = 0;
-    indexArray=[];
-    imageArray = [];
-    matchArray = [];
-    totalScore = 0;
-    totalMiss = 0;
-    player1Points = 0;
-    player2Points = 0;
   }
 
   var checkForMatch1P = function () {
@@ -216,8 +219,7 @@ function startGame (){
   };
 
   var removeActiveClass = function () {
-    $(".active1").removeClass("active1");
-    $(".active2").removeClass("active2");
+    $(".active").removeClass("active");
   }
 
   $(".cardColor").on("click", function () {
@@ -225,26 +227,80 @@ function startGame (){
   })
 
   $(".changeCardsButton").on("click", function () {
-    $(".changeCards").show();
+    $(".changeSettings").show();
   });
 
-  $(".closeSettings").on("click", function () {
-    $(".changeCards").hide();
+  $(".closeSettings,.changeColorBlue,.changeColorRed,.changeColorGreen").on("click", function () {
+    $(".changeSettings").hide();
   })
 
-  $(".changeColorBlue").on("click", function () {
-    $(".introPage,.card").css("background","blue");
-    $(".changeCards").hide();
+  var backgroundColor = function (color) {
+    $(".introPage,.card").css("background",color);
+  }
+
+  $(".changeColor").on("click", function () {
+    backgroundColor($(this).html());
   })
-  $(".changeColorRed").on("click", function () {
-    $(".introPage,.card").css("background","red");
-    $(".changeCards").hide();
-  })
-  $(".changeColorGreen").on("click", function () {
-    $(".introPage,.card").css("background","green");
-    $(".changeCards").hide();
-  })
+
+  var checkForWinner = function () {
+    if (totalScore === 10) {
+      if (playerCount === 1) {
+        $(".winnerPage").show()
+      } else {
+        if (player1Points > player2Points) {
+          $(".winnerPage").show();
+          $(".winnerPage h2").html("Congratulations " + player1 + "! You beat " + player2)
+        } else if (player1Points < player2Points) {
+          $(".winnerPage").show();
+          $(".winnerPage h2").html("Congratulations " + player2 + "! You beat " + player1)
+        } else {
+            $(".winnerPage").show();
+            $(".winnerPage h2").html("We have a draw!")
+          }
+        }
+      }
+    }
 
 };
 
 startGame();
+
+
+// $(".cage").on("click", function () {
+//   $("h1").html("Nick Cage Concentration!");
+//   $("h2").html("Welcome to the Nick Cage Memory Game!");
+//   $(".changeSettings").hide();
+//   for (var i =0; i <=9; i++) {
+//     $(".underCard").eq(i).attr("src",'images/cage/cage'+i+'.jpg')
+//   }
+//   for (var j =10; i <=19; i++) {
+//     $(".underCard").eq(i).attr("src",'images/cage/cage'+(i-10)+'.jpg')
+//   }
+//   randomize();
+// });
+//
+// $(".ferrell").on("click", function () {
+//   $("h1").html("Will Ferrell Concentration!");
+//   $("h2").html("Welcome to the Will Ferrell Memory Game!");
+//   $(".changeSettings").hide();
+//   for (var i =0; i <=9; i++) {
+//     $(".underCard").eq(i).attr("src",'images/ferrell/ferrell'+i+'.jpg')
+//   }
+//   for (var j =10; i <=19; i++) {
+//     $(".underCard").eq(i).attr("src",'images/ferrell/ferrell'+(i-10)+'.jpg')
+//   }
+//   randomize();
+// });
+//
+// $(".returnToSherlock").on("click", function () {
+//   $("h1").html("Sherlock Concentration!");
+//   $("h2").html("Welcome to the Sherlock Holmes Memory Game!");
+//   $(".changeSettings").hide();
+//   for (var i =0; i <=9; i++) {
+//     $(".underCard").eq(i).attr("src",'images/sherlock/sherlock'+i+'.jpg')
+//   }
+//   for (var j =10; i <=19; i++) {
+//     $(".underCard").eq(i).attr("src",'images/sherlock/sherlock'+(i-10)+'.jpg')
+//   }
+//   randomize();
+// });

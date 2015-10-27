@@ -8,7 +8,7 @@
 </head>
 <body>
   <header>
-    <h1>Nic Cage Concentration!</h1>
+    <h1>Sherlock Concentration!</h1>
     <input value="Player 1" name="1">
     <input value="Player 2" name="2">
     <button class = "playerSet">Set players</button>
@@ -21,9 +21,16 @@
 
   <main>
     <div class = "introPage">
-      <h2>Welcome to the Nicolas Cage Memory Game!</h2>
-      <button class = "playAloneButton">Play Alone</button>
-      <button class = "twoPlayerButton">Play with a Friend</button>
+      <h2>Welcome to the Sherlock Holmes Memory Game!</h2>
+      <div class = "introButtons">
+        <button class = "playAloneButton">Play Alone</button>
+        <button class = "twoPlayerButton">Play with a Friend</button>
+      </div>
+    </div>
+
+    <div class = "winnerPage">
+      <h2>Congratulations, you found all of the Sherlocks!</h2>
+        <p>To play again, please select the reset button below</p>
     </div>
 
     <div class = "help">
@@ -32,17 +39,19 @@
       </p>
       <p>If you get all the matching cards, you've won!</p>
       <p>Play with a partner to see who scores the most points!</p>
-      <div class = "closeHelp">X Close</div>
+      <button class = "closeHelp">X Close</button>
     </div>
 
-    <div class = "changeCards">
-      <button class = "ferrell">Change cards to Will Ferrell</button>
+    <div class = "changeSettings">
+      <button class = "changeCards" name = "cage">Change cards to Nick Cage</button>
+      <button class = "changeCards" name = "ferrell">Change cards to Will Ferrell</button>
+      <button class = "changeCards" name = "sherlock">Reset to Sherlock</button>
       <button class = "cardColor">Change card color</button>
       <button class = "closeSettings">Close</button>
       <div class = "colorChange">
-        <span class = "changeColorBlue">Blue</span>
-        <span class = "changeColorRed">Red</span>
-        <span class = "changeColorGreen">Green</span>
+        <span class = "changeColor">blue</span>
+        <span class = "changeColor">red</span>
+        <span class = "changeColor">green</span>
       </div>
     </div>
 
