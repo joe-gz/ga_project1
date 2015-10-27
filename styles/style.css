@@ -1,10 +1,11 @@
 body {
   /*background: #221E1D;*/
-  background: #fff;
+  background: url('../images/sherlock/sherlock6.jpg');
+  background-repeat: no-repeat;
 }
 
 header h1 {
-  color: #63AA9C;
+  color: #afd4cc;
   text-align: center;
   font-family: 'Josefin Sans', sans-serif;
 }
@@ -21,7 +22,7 @@ main {
   background: rgba(224,227,236,.31);
   position: absolute;
   border-radius: 25px;
-  color: #63AA9C;
+  color: #afd4cc;
   text-align: center;
   font-family: 'Playfair Display', serif;
 }
@@ -113,12 +114,12 @@ input {
 .points {
   display:none;
   font-family: 'Playfair Display', serif;
-  margin-left: 10px;
+  text-align: center;
 }
 
 .misses {
   display:none;
-  margin-left: 10px;
+  text-align: center;
   font-family: 'Playfair Display', serif;
 }
 
@@ -136,6 +137,10 @@ input {
 
 .closeHelp {
   cursor: pointer;
+  font-size: 1em;
+  border-radius: 5px;
+  font-family: 'Playfair Display', serif;
+  background-color: #E9633B;
 }
 
 .changeCardsButton {
@@ -204,6 +209,6 @@ footer {
 }
 
 .fa-cog {
-  color:#63AA9C;
+  color:#afd4cc;
   font-family: 'Playfair Display', serif;
 }

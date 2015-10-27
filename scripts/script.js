@@ -59,8 +59,8 @@ function startGame (){
         $(".underCard").eq(i).attr("src",'images/'+name+'/'+name+(i-10)+'.jpg')
       }
       randomize();
-      })
-    });
+    })
+  });
 
   $(".twoPlayerButton").on("click", function () {
     playerCount = 2;
@@ -254,13 +254,12 @@ function startGame (){
           $(".winnerPage").show();
           $(".winnerPage h2").html("Congratulations " + player2 + "! You beat " + player1)
         } else {
-            $(".winnerPage").show();
-            $(".winnerPage h2").html("We have a draw!")
-          }
+          $(".winnerPage").show();
+          $(".winnerPage h2").html("We have a draw!")
         }
       }
     }
-
+  }
 };
 
 startGame();
