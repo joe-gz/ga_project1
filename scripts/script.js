@@ -127,20 +127,15 @@ function startGame (){
   // This is the main click function on each card
   $(".card").each(function (){
     $(this).on("click",function(){
+      $(this).children(".underCard").show()
       if (clickCount < 1){
         $(this).addClass("active1")
-        $(this).children(".underCard").show();
         matchArray[0] = $(this).children(".underCard").attr("src");
-        console.log(clickCount);
-
         clickCount++
-        // checkForWinner();
       } else {
-        // indexArray[$(this).index()] = player1;
         $(this).addClass("active2")
         matchArray[1] = $(this).children(".underCard").attr("src");
         // this will show both cards for 1 second, then hide them
-        $(this).children(".underCard").show()
         setTimeout(function () {
           $(".underCard").hide();
         },500);
@@ -153,13 +148,13 @@ function startGame (){
         if (playerCount === 2){
           checkForMatch();
           turnCount++;
-          // checkForWinner();
           playerTurn();
         } else {
           checkForMatch1P();
           $(".playerTurn").text("Player turn: "+player1);
         }
       }
+      // checkForWinner();
     })
   });
 
@@ -232,6 +227,10 @@ function startGame (){
   $(".changeCardsButton").on("click", function () {
     $(".changeCards").show();
   });
+
+  $(".closeSettings").on("click", function () {
+    $(".changeCards").hide();
+  })
 
   $(".changeColorBlue").on("click", function () {
     $(".introPage,.card").css("background","blue");
