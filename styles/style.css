@@ -1,17 +1,28 @@
 body {
   /*background: #221E1D;*/
+
+  background-repeat: no-repeat;
+  background-color: #cccccc;
+}
+
+#wrapper {
+  width: 700px;
+  margin: 0 auto;
   background: url('../images/sherlock/sherlock6.jpg');
+  background-color: #fff;
   background-repeat: no-repeat;
 }
 
 header h1 {
-  color: #afd4cc;
+  color: black;
   text-align: center;
   font-family: 'Josefin Sans', sans-serif;
+  width:700px;
+  padding-top: 10px;
 }
 
 main {
-  height:18.75em;
+  height:400px;
   width:700px;
   color: white;
 }
@@ -31,7 +42,7 @@ main {
   font-size: 2em;
   display: block;
   margin: 5px;
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: #E9633B;
   font-family: 'Playfair Display', serif;
 }
@@ -41,7 +52,7 @@ main {
 }
 
 .twoPlayerButton {
-  margin-left: 27%;
+  margin-left: 24%;
 }
 
 .winnerPage {
@@ -53,14 +64,14 @@ main {
   font-family: 'Playfair Display', serif;
   color: #63AA9C;
   border-radius: 10px;
-  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
 }
 
 .card {
   margin-right:5px;
   margin-left:5px;
   margin-top: 5px;
-  width:18.5%;
+  width:23.5%;
   height:23%;
   background: blue;
   display: inline-block;
@@ -68,23 +79,16 @@ main {
   text-align: center;
   vertical-align: middle;
   border-radius: 10px;
-  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+}
+
+.card:hover {
+  box-shadow: 0px 0px 20px rgba(255,255,255,0.8);
 }
 
 .underCard {
   width:100%;
   height:100%;
-}
-
-.win {
-  top: 10%;
-  height: 50%;
-  width: 70%;
-  position: absolute;
-  font-size: 100px;
-  color: purple;
-  background: lemonchiffon;
-  text-align: center;
 }
 
 .playerTurn {
@@ -97,17 +101,19 @@ main {
   padding: 5px;
   display: none;
   font-family: 'Playfair Display', serif;
+  border-radius: 10px;
 }
 
 .playerSet {
   display: none;
   font-family: 'Playfair Display', serif;
   background-color: #E9633B;
+  border-radius: 10px;
 }
 
 input {
   display: none;
-  border-radius: 5px;
+  border-radius: 510px;
   margin-left: 10px;
 }
 
@@ -115,12 +121,14 @@ input {
   display:none;
   font-family: 'Playfair Display', serif;
   text-align: center;
+  width: 700px;
 }
 
 .misses {
   display:none;
   text-align: center;
   font-family: 'Playfair Display', serif;
+  width: 700px;
 }
 
 .help {
@@ -132,7 +140,7 @@ input {
   font-family: 'Playfair Display', serif;
   color: #63AA9C;
   border-radius: 10px;
-  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
 }
 
 .closeHelp {
@@ -156,7 +164,7 @@ input {
   font-family: 'Playfair Display', serif;
   color: #63AA9C;
   border-radius: 10px;
-  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
 }
 
 .changeCards {
@@ -198,17 +206,22 @@ input {
 
 .helpButton,.reset {
   font-size: .5em;
-  border-radius: 5px;
+  border-radius: 10px;
   font-family: 'Playfair Display', serif;
   background-color: #E9633B;
 }
 
 footer {
-  float:right;
   margin-top: 10px;
 }
 
 .fa-cog {
   color:#afd4cc;
   font-family: 'Playfair Display', serif;
+}
+
+.wizGif {
+  width: 100px;
+  height: 100px;
+  margin-left: 15px;
 }

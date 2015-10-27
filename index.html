@@ -9,61 +9,65 @@
   <link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
 </head>
 <body>
-  <header>
-    <h1>Sherlock Concentration!</h1>
-    <div class = "points">Player 1 Points: 0</div>
-    <div class = "misses">Player 1 Misses</div>
-    <div class = "points">Player 2 Points: 0</div>
-    <div class = "misses">Player 1 Misses</div>
-    <div class = "playerTurn">Please input player names</div>
-    <input value="Player 1" name="1">
-    <input value="Player 2" name="2">
-    <button class = "playerSet">Set the Players</button>
-  </header>
+  <div id = "wrapper">
+    <header>
+      <h1>Sherlock Concentration!</h1>
+      <div class = "points">Player 1 Points: 0</div>
+      <div class = "misses">Player 1 Misses</div>
+      <div class = "points">Player 2 Points: 0</div>
+      <div class = "misses">Player 1 Misses</div>
+      <div class = "playerTurn">Please input player names</div>
+      <input value="Player 1" name="1">
+      <input value="Player 2" name="2">
+      <button class = "playerSet">Set the Players</button>
+    </header>
 
-  <main>
-    <div class = "introPage">
-      <h2>Welcome to the Sherlock Holmes Memory Game!</h2>
-      <div class = "introButtons">
-        <button class = "playAloneButton">Play Alone</button>
-        <button class = "twoPlayerButton">Play with a Friend</button>
+    <main>
+      <div class = "introPage">
+        <h2>Welcome to the Sherlock Holmes Memory Game!</h2>
+        <div class = "introButtons">
+          <button class = "playAloneButton">Play Alone</button>
+          <button class = "twoPlayerButton">Play Against a Friend</button>
+        </div>
       </div>
-    </div>
 
-    <div class = "winnerPage">
-      <h2>Congratulations, you found all of the Sherlocks!</h2>
+      <div class = "winnerPage">
+        <h2>Congratulations, you found all of the Sherlocks!</h2>
         <p>To play again, please select the reset button below</p>
-    </div>
-
-    <div class = "help">
-      <p>
-        "Concentration" is a card game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn.
-      </p>
-      <p>If you get all the matching cards, you've won!</p>
-      <p>Play with a partner to see who scores the most points!</p>
-      <button class = "closeHelp">X Close</button>
-    </div>
-
-    <div class = "changeSettings">
-      <button class = "changeCards" name = "cage">Change cards to Nick Cage</button>
-      <button class = "changeCards" name = "ferrell">Change cards to Will Ferrell</button>
-      <button class = "changeCards" name = "sherlock">Reset to Sherlock</button>
-      <button class = "cardColor">Change card color</button>
-      <div class = "colorChange">
-        <span class = "changeColor">blue</span>
-        <span class = "changeColor">red</span>
-        <span class = "changeColor">green</span>
+        <img class = "wizGif" src = "images/wizards.gif">
       </div>
-      <button class = "closeSettings">Close</button>
-    </div>
 
-  </main>
-  <footer>
-    <button class = "reset">Reset</button>
-    <button class = "helpButton">Help</button>
-    <i class="fa fa-cog changeCardsButton">Change Settings</i>
-  </footer>
-  <script src = "scripts/jquery-2.1.4.min.js"></script>
-  <script src = "scripts/script.js"></script>
+      <div class = "help">
+        <p>
+          "Concentration" is a card game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn.
+        </p>
+        <p>If you get all the matching cards, you've won!</p>
+        <p>Play with a partner to see who scores the most points!</p>
+        <p>Click on the settings button to change decks!</p>
+        <button class = "closeHelp">X Close</button>
+      </div>
+
+      <div class = "changeSettings">
+        <button class = "changeCards" name = "cage">Change cards to Nick Cage</button>
+        <button class = "changeCards" name = "ferrell">Change cards to Will Ferrell</button>
+        <button class = "changeCards" name = "sherlock">Reset to Sherlock</button>
+        <button class = "cardColor">Change card color</button>
+        <div class = "colorChange">
+          <span class = "changeColor">blue</span>
+          <span class = "changeColor">red</span>
+          <span class = "changeColor">green</span>
+        </div>
+        <button class = "closeSettings">Close</button>
+      </div>
+
+    </main>
+    <footer>
+      <button class = "reset">Reset</button>
+      <button class = "helpButton">Help</button>
+      <i class="fa fa-cog changeCardsButton">Change Settings</i>
+    </footer>
+    <script src = "scripts/jquery-2.1.4.min.js"></script>
+    <script src = "scripts/script.js"></script>
+  </div>
 </body>
 </html>

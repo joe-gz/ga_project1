@@ -21,12 +21,12 @@ function startGame (){
   setBoard();
 
   var makeGamePieces = function () {
-    for (var j=0; j<=9; j++){
+    for (var j=0; j<=7; j++){
       $( "main" ).append( "<div class = 'card'><img class = 'underCard' src='images/sherlock/sherlock"+j+".jpg'></div>" );
       $(".underCard").hide();
     };
 
-    for (var j=0; j<=9; j++){
+    for (var j=0; j<=7; j++){
       $( "main" ).append( "<div class = 'card'><img class = 'underCard' src='images/sherlock/sherlock"+j+".jpg'></div>" );
       $(".underCard").hide();
     };
@@ -70,6 +70,10 @@ function startGame (){
   $(".playAloneButton").on("click", function () {
     playerCount = 1;
     showInputs();
+    $(".points").eq(0).html(player1+" Points: 0")
+    $(".points").eq(0).show();
+    $(".misses").eq(0).html(player1+" Misses: 0")
+    $(".misses").eq(0).show();
     $("header input").eq(1).hide();
   })
 
@@ -78,6 +82,7 @@ function startGame (){
     $("header input").show();
     $(".playerSet").show();
     $(".playerTurn").show();
+    $(".level").show()
   }
 
   // Sets the players using the inputs, then hides input and procudes scoreboard
@@ -99,11 +104,6 @@ function startGame (){
       $(".points").eq(0).html(player1+" Points: 0")
       $(".points").eq(1).html(player2+" Points: 0")
       $(".points").show();
-    } else {
-      $(".points").eq(0).html(player1+" Points: 0")
-      $(".points").eq(0).show();
-      $(".misses").eq(0).html(player1+" Misses: 0")
-      $(".misses").eq(0).show();
     }
   }
 
@@ -243,7 +243,7 @@ function startGame (){
   })
 
   var checkForWinner = function () {
-    if (totalScore === 10) {
+    if (totalScore === 8) {
       if (playerCount === 1) {
         $(".winnerPage").show()
       } else {
