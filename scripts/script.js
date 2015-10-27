@@ -32,16 +32,17 @@ function startGame (){
   for (var i = 0; i < card.length; i++) {
     var target = Math.floor(Math.random() * card.length - 1) + 1;
     var target2 = Math.floor(Math.random() * card.length - 1) + 1;
-    card.eq(target).before(card.eq(target2));
+    var target3 = Math.floor(Math.random() * card.length - 1) + 1;
+    card.eq(target).before(card.eq(target2)).before(card.eq(target3));
   }
 
-  $(".keanu").on("click", function () {
+  $(".ferrell").on("click", function () {
     $(".changeCards").hide();
     for (var i =0; i <=9; i++) {
-      $(".underCard").eq(i).attr("src",'images/keanu/keanu'+i+'.jpg')
+      $(".underCard").eq(i).attr("src",'images/ferrell/ferrell'+i+'.jpg')
     }
     for (var j =10; i <=19; i++) {
-      $(".underCard").eq(i).attr("src",'images/keanu/keanu'+(i-10)+'.jpg')
+      $(".underCard").eq(i).attr("src",'images/ferrell/ferrell'+(i-10)+'.jpg')
     }
   })
 
@@ -78,13 +79,13 @@ function startGame (){
 
   var playerScoreboardShow = function() {
     if (playerCount === 2) {
-      $(".points").eq(0).html(player1+" Points:")
-      $(".points").eq(1).html(player2+" Points:")
+      $(".points").eq(0).html(player1+" Points: 0")
+      $(".points").eq(1).html(player2+" Points: 0")
       $(".points").show();
     } else {
-      $(".points").eq(0).html(player1+" Points:")
+      $(".points").eq(0).html(player1+" Points: 0")
       $(".points").eq(0).show();
-      $(".misses").eq(0).html(player1+" Misses:")
+      $(".misses").eq(0).html(player1+" Misses: 0")
       $(".misses").eq(0).show();
     }
   }
@@ -111,6 +112,7 @@ function startGame (){
     playerScoreboardHide();
     setBoard();
     playerCount = 0;
+    clickCount = 0;
     // $(".win").remove();
   })
 
@@ -129,6 +131,8 @@ function startGame (){
         $(this).addClass("active1")
         $(this).children(".underCard").show();
         matchArray[0] = $(this).children(".underCard").attr("src");
+        console.log(clickCount);
+
         clickCount++
         // checkForWinner();
       } else {
@@ -136,20 +140,24 @@ function startGame (){
         $(this).addClass("active2")
         matchArray[1] = $(this).children(".underCard").attr("src");
         // this will show both cards for 1 second, then hide them
-        $(this).children(".underCard").show().delay(1000).queue(function() {
+        $(this).children(".underCard").show()
+        setTimeout(function () {
           $(".underCard").hide();
-        });
-
+        },500);
+        // .delay(500).queue(function() {
+        // $(".underCard").hide();
+        // console.log("Is this being hit by the bug?");
+        // });
+        console.log(clickCount);
+        clickCount = 0;
         if (playerCount === 2){
           checkForMatch();
           turnCount++;
-          clickCount = 0;
           // checkForWinner();
           playerTurn();
         } else {
           checkForMatch1P();
           $(".playerTurn").text("Player turn: "+player1);
-          clickCount = 0;
         }
       }
     })
@@ -164,36 +172,27 @@ function startGame (){
   };
 
   var checkForMatch = function () {
-    if (turnCount%2===0) {
-      if (matchArray[0] === matchArray[1]) {
+    if (matchArray[0] === matchArray[1]) {
+      if (turnCount%2===0) {
         totalScore ++;
         player1Points++;
         hideMatchedSquares();
-      } else {
-        totalMiss ++;
-        $(".active1").removeClass("active1");
-        $(".active2").removeClass("active2");
-      }
-      $(".points").eq(0).html(player1+" Points: "+player1Points)
-    } else {
-      if (matchArray[0] === matchArray[1]) {
-        totalScore ++;
+        $(".points").eq(0).html(player1+" Points: "+player1Points)
+      } else {totalScore ++;
         player2Points++;
         hideMatchedSquares();
-      } else {
-        totalMiss ++;
-        $(".active1").removeClass("active1");
-        $(".active2").removeClass("active2");
+        $(".points").eq(1).html(player2+" Points: "+player2Points)
       }
-      $(".points").eq(1).html(player2+" Points: "+player2Points)
+    } else {
+      totalMiss ++;
     }
+    removeActiveClass();
   }
 
   var hideMatchedSquares = function () {
     $(".active1").hide();
     $(".active2").hide();
-    $(".active1").removeClass(".active1");
-    $(".active2").removeClass(".active2");
+    removeActiveClass();
   }
 
   var setBoard = function () {
@@ -215,16 +214,37 @@ function startGame (){
       hideMatchedSquares();
     } else {
       totalMiss ++;
-      $(".active1").removeClass("active1");
-      $(".active2").removeClass("active2");
+      removeActiveClass();
     }
     $(".points").eq(0).html(player1+" Points: "+player1Points)
     $(".misses").eq(0).html(player1+" Misses: "+totalMiss)
   };
 
+  var removeActiveClass = function () {
+    $(".active1").removeClass("active1");
+    $(".active2").removeClass("active2");
+  }
+
+  $(".cardColor").on("click", function () {
+    $(".colorChange").show();
+  })
+
   $(".changeCardsButton").on("click", function () {
     $(".changeCards").show();
   });
+
+  $(".changeColorBlue").on("click", function () {
+    $(".introPage,.card").css("background","blue");
+    $(".changeCards").hide();
+  })
+  $(".changeColorRed").on("click", function () {
+    $(".introPage,.card").css("background","red");
+    $(".changeCards").hide();
+  })
+  $(".changeColorGreen").on("click", function () {
+    $(".introPage,.card").css("background","green");
+    $(".changeCards").hide();
+  })
 
 };
 

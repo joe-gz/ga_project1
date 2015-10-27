@@ -86,5 +86,9 @@ input {
   background: yellow;
   width: inherit;
   display: none;
+}
 
+.colorChange {
+  display: none;
+  cursor: pointer;
 }

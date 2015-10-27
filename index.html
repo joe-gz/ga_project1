@@ -12,9 +12,9 @@
     <input value="Player 1" name="1">
     <input value="Player 2" name="2">
     <button class = "playerSet">Set players</button>
-    <div class = "points">Player 1 Points</div>
+    <div class = "points">Player 1 Points: 0</div>
     <div class = "misses">Player 1 Misses</div>
-    <div class = "points">Player 2 Points</div>
+    <div class = "points">Player 2 Points: 0</div>
     <div class = "misses">Player 1 Misses</div>
     <div class = "playerTurn">Please input player names</div>
   </header>
@@ -36,14 +36,20 @@
     </div>
 
     <div class = "changeCards">
-      <button class = "keanu">Change cards to Keanu Reeves</button>
-      <button class = "choose">Change Cards to (choose late)</button>
+      <button class = "ferrell">Change cards to Will Ferrell</button>
+      <button class = "cardColor">Change card color</button>
+      <div class = "colorChange">
+        <span class = "changeColorBlue">Blue</span>
+        <span class = "changeColorRed">Red</span>
+        <span class = "changeColorGreen">Green</span>
+      </div>
     </div>
+
   </main>
   <footer>
     <button class = "reset">Reset</button>
     <button class = "helpButton">Help</button>
-    <i class="fa fa-cog changeCardsButton">Change Cards</i>
+    <i class="fa fa-cog changeCardsButton">Change Settings</i>
   </footer>
   <script src = "scripts/jquery-2.1.4.min.js"></script>
   <script src = "scripts/script.js"></script>
