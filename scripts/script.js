@@ -173,18 +173,18 @@ function startGame (){
         matchArray[0] = srcImage;
         clickCount++
       } else {
-          if ($(this).hasClass("card1")) {
-            matchArray [0]=srcImage;
-          } else {
-        matchArray[1] = srcImage;
-        // this will show both cards for .5 seconds, then hide them
-        setTimeout(function () {
-          $(".underCard").hide();
-        },500);
-        clickCount = 0;
-        matchAndTurn();
-      }
-      $(".card1").removeClass("card1");
+        if ($(this).hasClass("card1")) {
+          matchArray [0]=srcImage;
+        } else {
+          matchArray[1] = srcImage;
+          // this will show both cards for .5 seconds, then hide them
+          setTimeout(function () {
+            $(".underCard").hide();
+          },500);
+          clickCount = 0;
+          matchAndTurn();
+        }
+        $(".card1").removeClass("card1");
       }
 
       checkForWinner();
