@@ -36,6 +36,7 @@ function startGame (){
     randomize();
   }
 
+  // used to randomize the placement of pieces on the board
   var randomize = function() {
     var card = $(".card");
     for (var i = 0; i < card.length; i++) {
@@ -48,6 +49,7 @@ function startGame (){
 
   makeGamePieces();
 
+  // used to replace board images with the selected person. ie. cage, ferrell
   var replaceImages = function (name) {
     for (var i =0; i <=7; i++) {
       $(".underCard").eq(i).attr("src",'images/'+name+'/'+name+i+'.jpg')
@@ -60,6 +62,7 @@ function startGame (){
     randomize();
   }
 
+  // this will change the images on the card based on who is selected
   $(".changeCards").each(function (){
     $(this).on("click",function(){
       var name = $(this).attr("name")
@@ -76,12 +79,16 @@ function startGame (){
   $(".playAloneButton").on("click", function () {
     playerCount = 1;
     showInputs();
-    $(".points").eq(0).html(player1+" Points: 0")
-    $(".points").eq(0).show();
+    setPlayerOneToZero();
     $(".misses").eq(0).html(player1+" Misses: 0")
     $(".misses").eq(0).show();
     $("header input").eq(1).hide();
   })
+
+  var setPlayerOneToZero = function () {
+    $(".points").eq(0).html(player1+" Points: 0")
+    $(".points").eq(0).show();
+  }
 
   var showInputs = function () {
     $(".introPage").hide();
@@ -122,26 +129,30 @@ function startGame (){
     $(".misses").hide();
   }
 
-  // Reset the board
+  // Reset the board. needs a lot of cleaning
   $(".reset").on("click",function() {
     $(".card").css("background","blue");
-    $(".underCard").hide();
-    $(".playerTurn").hide();
-    $(".playerTurn").text("Please set players");
+    hideOnReset();
+    // $(".playerTurn").text("Please set players");
     $(".card").css("visibility","");
     replaceImages('sherlock');
     $(".introPage").show();
-    playerSetHide();
-    playerScoreboardHide();
     setBoard();
     playerCount = 0;
     clickCount = 0;
-    $(".winnerPage").hide()
-    $("#timer").hide();
     time = 30;
     $(".timerButton").show();
     clearInterval(timerID);
   })
+
+  var hideOnReset = function () {
+    $(".underCard").hide();
+    $(".playerTurn").hide();
+    playerSetHide();
+    playerScoreboardHide();
+    $(".winnerPage").hide()
+    $("#timer").hide();
+  }
 
   $(".helpButton").on("click", function() {
     $(".help").show();
@@ -156,29 +167,35 @@ function startGame (){
     $(this).on("click",function(){
       $(this).children(".underCard").show()
       $(this).addClass("active")
+      var srcImage = $(this).children(".underCard").attr("src");
       if (clickCount < 1){
-        matchArray[0] = $(this).children(".underCard").attr("src");
+        matchArray[0] = srcImage;
         clickCount++
       } else {
-        matchArray[1] = $(this).children(".underCard").attr("src");
-        // this will show both cards for 1 second, then hide them
+        matchArray[1] = srcImage;
+        // this will show both cards for .5 seconds, then hide them
         setTimeout(function () {
           $(".underCard").hide();
         },500);
         clickCount = 0;
-        if (playerCount === 2){
-          checkForMatch();
-          turnCount++;
-          playerTurn();
-        } else {
-          checkForMatch1P();
-          $(".playerTurn").text("Player turn: "+player1);
-        }
+        matchAndTurn();
       }
       checkForWinner();
       checkTimerWinner();
     })
   });
+
+// runs checkForMatch for two player and one player, and adds to "turnCount"
+  var matchAndTurn = function () {
+    if (playerCount === 2){
+      checkForMatch();
+      turnCount++;
+      playerTurn();
+    } else {
+      checkForMatch1P();
+      $(".playerTurn").text("Player turn: "+player1);
+    }
+  };
 
   var playerTurn = function() {
     if (turnCount%2 === 0){
@@ -188,6 +205,9 @@ function startGame (){
     }
   };
 
+  // matchArray is an array with 2 values that are added one the first and second picture clicks respectively
+  // this will check if the two values within the array are equal to each other and add a point
+  // this is done for the two player game
   var checkForMatch = function () {
     if (matchArray[0] === matchArray[1]) {
       totalScore ++;
@@ -211,6 +231,7 @@ function startGame (){
     removeActiveClass();
   }
 
+  // this checks for match in a one-player situation
   var checkForMatch1P = function () {
     if (matchArray[0] === matchArray[1]) {
       totalScore ++;
@@ -267,6 +288,8 @@ function startGame (){
     }
   }
 
+  // everything below is run for the timer game.
+  // this will set and end the timer for 30 seconds
   var updateTime = function(){
     $("#timer").html("Time elapsed: " + time);
     time--;
@@ -284,8 +307,7 @@ function startGame (){
     $("#timer").show();
     $(".timerButton").hide();
     $(".introPage").hide();
-    $(".points").eq(0).html(player1+" Points: 0")
-    $(".points").eq(0).show();
+    setPlayerOneToZero();
     runTimer();
   })
 
