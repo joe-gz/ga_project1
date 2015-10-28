@@ -160,10 +160,6 @@ function startGame (){
         setTimeout(function () {
           $(".underCard").hide();
         },500);
-        // .delay(500).queue(function() {
-        // $(".underCard").hide();
-        // console.log("Is this being hit by the bug?");
-        // });
         clickCount = 0;
         if (playerCount === 2){
           checkForMatch();
@@ -188,12 +184,12 @@ function startGame (){
 
   var checkForMatch = function () {
     if (matchArray[0] === matchArray[1]) {
+      totalScore ++;
       if (turnCount%2===0) {
-        totalScore ++;
         player1Points++;
         hideMatchedSquares();
         $(".points").eq(0).html(player1+" Points: "+player1Points)
-      } else {totalScore ++;
+      } else {
         player2Points++;
         hideMatchedSquares();
         $(".points").eq(1).html(player2+" Points: "+player2Points)
