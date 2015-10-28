@@ -28,6 +28,3 @@ Probably the most important methods I used here were .hide(), .show(), and visib
 A couple issues I faced or still have unsolved:
 1) creating an "easy" and "hard" level. With a little more time I feel confident I could figure this out, however, I am running into an issue with my loops building the divs.
 2) Adding more CSS animations. Specifically, I could not get the cards to actually flip.  I believe that is due to the way I actually built the boards, but I am still investigating.
-
-Things I wanted to get to eventually:
-1) create a timer game
