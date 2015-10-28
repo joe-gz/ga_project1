@@ -18,6 +18,7 @@ function startGame (){
   var player1Points = 0;
   var player2Points = 0;
   var playerCount = 0;
+  var time = 30;
   setBoard();
 
   var makeGamePieces = function () {
@@ -260,6 +261,23 @@ function startGame (){
       }
     }
   }
+
+  // var updateTime = function(){
+  //   $("#timer").html("Time elapsed: " + time);
+  //   time--;
+  //   if (time <=0) {
+  //     time = 0;
+  //   }
+  // }
+  //
+  // $("#start").on("click",function () {
+  //   var timer = setInterval(updateTime, 1000);
+  //   timer;
+  //   if ( time <= 0) {
+  //     clearInterval(timer);
+  //   }
+  // })
+
 };
 
 startGame();

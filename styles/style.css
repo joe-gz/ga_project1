@@ -9,6 +9,7 @@ body {
   width: 700px;
   margin: 0 auto;
   background: url('../images/sherlock/sherlock6.jpg');
+  background-size: 80px 65px;
   background-color: #fff;
   background-repeat: no-repeat;
 }
@@ -229,3 +230,7 @@ footer {
   height: 100px;
   margin-left: 15px;
 }
+
+/*#timer {
+  margin-top: 100px;
+}*/
