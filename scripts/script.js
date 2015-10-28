@@ -19,6 +19,7 @@ function startGame (){
   var player2Points = 0;
   var playerCount = 0;
   var time = 30;
+  var timerID;
   setBoard();
 
   var makeGamePieces = function () {
@@ -139,6 +140,7 @@ function startGame (){
     $("#timer").hide();
     time = 30;
     $(".timerButton").show();
+    clearInterval(timerID);
   })
 
   $(".helpButton").on("click", function() {
@@ -273,14 +275,13 @@ function startGame (){
     }
   }
 
-var runTimer = function () {
-  setInterval(updateTime, 1000);
-}
+  function runTimer () {
+    timerID = setInterval(updateTime, 1000);
+  }
 
   $(".timerButton").on("click",function () {
     playerCount = 1;
     $("#timer").show();
-    time = 30;
     $(".timerButton").hide();
     $(".introPage").hide();
     $(".points").eq(0).html(player1+" Points: 0")
@@ -293,13 +294,13 @@ var runTimer = function () {
       if (playerCount === 1) {
         $(".winnerPage").show();
       }
-  } else if (time === 0) {
-    $(".winnerPage").show();
-    $(".winnerPage h2").html("Sorry, you are out of time!");
-  } if ( time <= 0) {
-    clearInterval(timer);
+    } else if (time === 0) {
+      $(".winnerPage").show();
+      $(".winnerPage h2").html("Sorry, you are out of time!");
+    } if ( time <= 0) {
+      clearInterval(timerID);
+    }
   }
-}
 };
 
 startGame();
