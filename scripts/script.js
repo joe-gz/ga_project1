@@ -46,19 +46,23 @@ function startGame (){
 
   makeGamePieces();
 
+  var replaceImages = function (name) {
+    for (var i =0; i <=7; i++) {
+      $(".underCard").eq(i).attr("src",'images/'+name+'/'+name+i+'.jpg')
+      $(".underCard").eq(8).attr("src",'images/'+name+'/'+name+6+'.jpg')
+      $(".underCard").eq(9).attr("src",'images/'+name+'/'+name+7+'.jpg')
+    }
+    for (var j =10; j <=15; j++) {
+      $(".underCard").eq(j).attr("src",'images/'+name+'/'+name+(j-10)+'.jpg')
+    }
+    randomize();
+  }
+
   $(".changeCards").each(function (){
     $(this).on("click",function(){
       var name = $(this).attr("name")
-      $("h1").html(name+" Concentration!");
-      $("h2").html("Welcome to the" +name+ "Memory Game!");
       $(".changeSettings").hide();
-      for (var i =0; i <=9; i++) {
-        $(".underCard").eq(i).attr("src",'images/'+name+'/'+name+i+'.jpg')
-      }
-      for (var j =10; i <=19; i++) {
-        $(".underCard").eq(i).attr("src",'images/'+name+'/'+name+(i-10)+'.jpg')
-      }
-      randomize();
+      replaceImages(name);
     })
   });
 
@@ -123,7 +127,8 @@ function startGame (){
     $(".underCard").hide();
     $(".playerTurn").hide();
     $(".playerTurn").text("Please set players");
-    $(".card").css("display","")
+    $(".card").css("visibility","");
+    replaceImages('sherlock');
     $(".introPage").show();
     playerSetHide();
     playerScoreboardHide();
@@ -131,7 +136,6 @@ function startGame (){
     playerCount = 0;
     clickCount = 0;
     $(".winnerPage").hide()
-    // $(".win").remove();
   })
 
   $(".helpButton").on("click", function() {
@@ -201,7 +205,7 @@ function startGame (){
   }
 
   var hideMatchedSquares = function () {
-    $(".active").hide();
+    $(".active").css('visibility', 'hidden');
     removeActiveClass();
   }
 

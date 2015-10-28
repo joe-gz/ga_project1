@@ -38,6 +38,10 @@ main {
   font-family: 'Playfair Display', serif;
 }
 
+.introButtons {
+  margin-top: 10%;
+}
+
 .playAloneButton, .twoPlayerButton {
   font-size: 2em;
   display: block;
@@ -48,11 +52,11 @@ main {
 }
 
 .playAloneButton {
-  margin-left: 35%;
+  margin-left: 39%;
 }
 
 .twoPlayerButton {
-  margin-left: 24%;
+  margin-left: 27%;
 }
 
 .winnerPage {
