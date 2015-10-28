@@ -169,9 +169,13 @@ function startGame (){
       $(this).addClass("active")
       var srcImage = $(this).children(".underCard").attr("src");
       if (clickCount < 1){
+        $(this).addClass("card1")
         matchArray[0] = srcImage;
         clickCount++
       } else {
+          if ($(this).hasClass("card1")) {
+            matchArray [0]=srcImage;
+          } else {
         matchArray[1] = srcImage;
         // this will show both cards for .5 seconds, then hide them
         setTimeout(function () {
@@ -180,12 +184,15 @@ function startGame (){
         clickCount = 0;
         matchAndTurn();
       }
+      $(".card1").removeClass("card1");
+      }
+
       checkForWinner();
       checkTimerWinner();
     })
   });
 
-// runs checkForMatch for two player and one player, and adds to "turnCount"
+  // runs checkForMatch for two player and one player, and adds to "turnCount"
   var matchAndTurn = function () {
     if (playerCount === 2){
       checkForMatch();
@@ -213,17 +220,21 @@ function startGame (){
       totalScore ++;
       if (turnCount%2===0) {
         player1Points++;
-        hideMatchedSquares();
-        $(".points").eq(0).html(player1+" Points: "+player1Points)
       } else {
         player2Points++;
-        hideMatchedSquares();
-        $(".points").eq(1).html(player2+" Points: "+player2Points)
       }
+      hideMatchesAddPoints();
     } else {
       totalMiss ++;
     }
     removeActiveClass();
+  }
+
+  var hideMatchesAddPoints = function () {
+    hideMatchedSquares();
+    $(".points").eq(0).html(player1+" Points: "+player1Points);
+    hideMatchedSquares();
+    $(".points").eq(1).html(player2+" Points: "+player2Points);
   }
 
   var hideMatchedSquares = function () {
@@ -317,6 +328,7 @@ function startGame (){
         $(".winnerPage").show();
       }
     } else if (time === 0) {
+      // changes the text of the winners page to a "losers" page
       $(".winnerPage").show();
       $(".winnerPage h2").html("Sorry, you are out of time!");
     } if ( time <= 0) {
