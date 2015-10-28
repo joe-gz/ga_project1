@@ -87,7 +87,6 @@ function startGame (){
     $("header input").show();
     $(".playerSet").show();
     $(".playerTurn").show();
-    $(".level").show()
   }
 
   // Sets the players using the inputs, then hides input and procudes scoreboard
@@ -137,6 +136,9 @@ function startGame (){
     playerCount = 0;
     clickCount = 0;
     $(".winnerPage").hide()
+    $("#timer").hide();
+    time = 30;
+    $(".timerButton").show();
   })
 
   $(".helpButton").on("click", function() {
@@ -172,6 +174,7 @@ function startGame (){
         }
       }
       checkForWinner();
+      checkTimerWinner();
     })
   });
 
@@ -262,22 +265,41 @@ function startGame (){
     }
   }
 
-  // var updateTime = function(){
-  //   $("#timer").html("Time elapsed: " + time);
-  //   time--;
-  //   if (time <=0) {
-  //     time = 0;
-  //   }
-  // }
-  //
-  // $("#start").on("click",function () {
-  //   var timer = setInterval(updateTime, 1000);
-  //   timer;
-  //   if ( time <= 0) {
-  //     clearInterval(timer);
-  //   }
-  // })
+  var updateTime = function(){
+    $("#timer").html("Time elapsed: " + time);
+    time--;
+    if (time <=0) {
+      time = 0;
+    }
+  }
 
+var runTimer = function () {
+  setInterval(updateTime, 1000);
+}
+
+  $(".timerButton").on("click",function () {
+    playerCount = 1;
+    $("#timer").show();
+    time = 30;
+    $(".timerButton").hide();
+    $(".introPage").hide();
+    $(".points").eq(0).html(player1+" Points: 0")
+    $(".points").eq(0).show();
+    runTimer();
+  })
+
+  var checkTimerWinner = function () {
+    if (totalScore === 8) {
+      if (playerCount === 1) {
+        $(".winnerPage").show();
+      }
+  } else if (time === 0) {
+    $(".winnerPage").show();
+    $(".winnerPage h2").html("Sorry, you are out of time!");
+  } if ( time <= 0) {
+    clearInterval(timer);
+  }
+}
 };
 
 startGame();

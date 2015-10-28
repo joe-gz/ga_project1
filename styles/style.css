@@ -43,7 +43,7 @@ main {
   margin-top: 10%;
 }
 
-.playAloneButton, .twoPlayerButton {
+.playAloneButton, .twoPlayerButton, .timerButton {
   font-size: 2em;
   display: block;
   margin: 5px;
@@ -58,6 +58,10 @@ main {
 
 .twoPlayerButton {
   margin-left: 27%;
+}
+
+.timerButton {
+  margin-left: 31%;
 }
 
 .winnerPage {
@@ -231,6 +235,6 @@ footer {
   margin-left: 15px;
 }
 
-/*#timer {
-  margin-top: 100px;
-}*/
+#timer {
+  display: none;
+}
