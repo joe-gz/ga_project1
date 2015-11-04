@@ -32,6 +32,7 @@ function startGame (){
       $( "main" ).append( "<div class = 'card'><img class = 'underCard' src='images/sherlock/sherlock"+j+".jpg'></div>" );
       $(".underCard").hide();
     };
+    //(ERICA) What purpose does this duplication serve?
 
     randomize();
   }
@@ -43,6 +44,7 @@ function startGame (){
       var target2 = Math.floor(Math.random() * card.length - 1) + 1;
       var target3 = Math.floor(Math.random() * card.length - 1) + 1;
       card.eq(target).before(card.eq(target2)).before(card.eq(target3));
+      //(ERICA) This is clever!
     }
   }
 
