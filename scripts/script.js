@@ -171,12 +171,14 @@ function startGame (){
       if (clickCount < 1){
         $(this).addClass("card1")
         matchArray[0] = srcImage;
+        console.log(matchArray);
         clickCount++
       } else {
         if ($(this).hasClass("card1")) {
           matchArray [0]=srcImage;
         } else {
           matchArray[1] = srcImage;
+          console.log(matchArray);
           // this will show both cards for .5 seconds, then hide them
           setTimeout(function () {
             $(".underCard").hide();
